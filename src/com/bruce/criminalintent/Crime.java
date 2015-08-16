@@ -26,9 +26,9 @@ public class Crime {
 	 * DateFormat.SHORT，显示格式为15/7/13
 	 * DateFormat.FULL，显示格式为2015年7月13日星期一
 	 */
-	public String getDate() {
+	public Date getDate() {
 		DateFormat date = DateFormat.getDateInstance(DateFormat.FULL);
-		return date.format(mDate);
+		return mDate;
 	}
 	public void setDate(Date date) {
 		mDate = date;

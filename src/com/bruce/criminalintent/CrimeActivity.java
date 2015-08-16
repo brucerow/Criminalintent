@@ -1,5 +1,7 @@
 package com.bruce.criminalintent;
 
+import java.util.UUID;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,9 +10,9 @@ import android.support.v4.app.FragmentManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class CrimeActivity extends FragmentActivity {
+public class CrimeActivity extends SingleFragmentActivity {
 
-	@Override
+	/*@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_fragment);
@@ -20,8 +22,9 @@ public class CrimeActivity extends FragmentActivity {
 			fragment = new CrimeFargment();
 			fm.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
 		}
-	}
-
+	}*/
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -39,5 +42,12 @@ public class CrimeActivity extends FragmentActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	protected Fragment createFragment() {
+		//return new CrimeFargment();
+		UUID crimeId = (UUID) getIntent().getSerializableExtra(CrimeFargment.EXTRA_CRIME_ID);
+		return CrimeFargment.newInstance(crimeId);
 	}
 }

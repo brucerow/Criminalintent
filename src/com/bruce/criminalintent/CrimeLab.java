@@ -14,12 +14,12 @@ public class CrimeLab {
 	private CrimeLab(Context appcontext){
 		mappContext = appcontext;
 		mCrimes = new ArrayList<Crime>();
-		for(int i = 0;i<100;i++){
+		/*for(int i = 0;i<100;i++){
 			Crime c = new Crime();
 			c.setTitle("Crime#"+i);
 			c.setSolved(i%2==0);
 			mCrimes.add(c);
-		}
+		}*/
 	} 
 	//单例模式第三步:提供一个公开获取对象的方法
 	public static CrimeLab get(Context context){
@@ -36,7 +36,11 @@ public class CrimeLab {
 		return mCrimes;
 		
 	}
-	
+	//增加一个Crime
+	public void addCrime(Crime c ){
+		mCrimes.add(c);
+	}
+	//获取一个Crime
 	public Crime getCrime(UUID id){
 		for(Crime c :mCrimes){
 			if(c.getId().equals(id)){
